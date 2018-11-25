@@ -51,17 +51,22 @@ public class ChatLog implements Observer {
 
     public void acceptMessage(ChatMessage message) {
         DatedChatMessage datedMessage = new DatedChatMessage(message);
-        System.out.println(dateFormatter.format(datedMessage.getReceiveDate())
-                + datedMessage.getAuthor()
-                + ":"
-                + datedMessage.getMessage()
-        );
+        printMessage(datedMessage);
 
         //przekonwertować ChatMessage na DatedChatMessage
         //wypisz na ekran wiadomość w formacie:
         //<Data><Author>: <Message>
         //wyslij DatedChatMessage do wszystkich klientów
         //jesli sie nie udalo, to wyrejestruj tego klienta
+    }
+    public void printMessage(DatedChatMessage datedMessage) {
+        System.out.println(dateFormatter.format(datedMessage.getReceiveDate())
+                + " "
+                + datedMessage.getAuthor()
+                + ": "
+                + datedMessage.getMessage()
+
+        );
     }
 
 
