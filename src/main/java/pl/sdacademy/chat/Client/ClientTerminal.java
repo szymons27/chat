@@ -1,12 +1,9 @@
 package pl.sdacademy.chat.Client;
 
 import pl.sdacademy.chat.model.ChatMessage;
-import pl.sdacademy.chat.model.DatedChatMessage;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -14,7 +11,7 @@ public class ClientTerminal implements Runnable {
     private final Socket connectionToServer;
 
     public ClientTerminal() throws IOException {
-        connectionToServer = new Socket("IP", 5567);
+        connectionToServer = new Socket("192.168.8.4", 5567);
     }
 
     @Override
@@ -22,7 +19,6 @@ public class ClientTerminal implements Runnable {
         try (ObjectOutputStream streamToServer = new ObjectOutputStream(connectionToServer.getOutputStream())) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Your username: ");
-            scanner.nextLine();
             String userName = scanner.nextLine();
             String message;
             do {
@@ -39,6 +35,7 @@ public class ClientTerminal implements Runnable {
             e.printStackTrace();
         }
         System.out.println("disconnecting");
+
         //wytworzenie strumieni musi w try with resources -> try()
         //pobierz nick od usera
         //petla az user wpisze exit
