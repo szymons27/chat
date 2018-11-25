@@ -3,16 +3,16 @@ package pl.sdacademy.chat.model;
 import java.time.LocalDateTime;
 
 public class DatedChatMessage extends ChatMessage{
-    private final LocalDateTime recieveDate;
+    private final LocalDateTime receiveDate;
 
-    public LocalDateTime getRecieveDate() {
-        return recieveDate;
+    public LocalDateTime getReceiveDate() {
+        return receiveDate;
     }
 
     public DatedChatMessage(ChatMessage chatMessage) {
         super(chatMessage.getAuthor(),chatMessage.getMessage());
 
-        this.recieveDate = LocalDateTime.now();
+        this.receiveDate = LocalDateTime.now();
 
 
     }
